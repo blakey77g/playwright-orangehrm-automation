@@ -14,29 +14,18 @@ test("user can search for an existing candidate from the Candidates page", async
 
   const candidateName = "TestFN TestMN TestLN";
 
-  // Login
+  
   await loginPage.goto();
-
   await loginPage.login(
     process.env.ORANGEHRM_USERNAME,
     process.env.ORANGEHRM_PASSWORD,
   );
 
-  // Verify successful navigation to Dashboard
   await dashboardPage.verifyDashboardDisplayed();
-
-  // Navigate from Dashboard to Recruitment/Candidates
   await dashboardPage.navigateToRecruitment();
 
-  // Verify we landed on Candidates
   await candidatesPage.verifyCandidatesPageDisplayed();
-
-  // Search for candidate using autocomplete
   await candidatesPage.selectCandidate("test", candidateName);
-
-  // Click Search
   await candidatesPage.search();
-
-  // Verify candidate appears in search results
   await candidatesPage.verifyCandidateDisplayed(candidateName);
 });
