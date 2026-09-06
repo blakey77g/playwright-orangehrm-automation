@@ -21,7 +21,4 @@ export class LoginPage {
     await expect(this.page).toHaveURL(/dashboard/);
   }
 
-  async verifyLoginSuccessful() {
-    await expect(this.page).toHaveURL(/dashboard/);
-  }
 }
